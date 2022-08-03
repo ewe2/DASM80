@@ -20,12 +20,14 @@
 #undef trace
 #endif
 
+#ifdef DEBUG
 #ifdef _TRACE_ACTIVE_
 #	define trace(trace) trace
 #	define tgetch() getch()
 #else
 #	define trace(trace)
 #	define tgetch()
+#endif
 #endif
 
 // Z-80 DISASSEMBLER-SIMULATOR ////////////////////////////////////////////////

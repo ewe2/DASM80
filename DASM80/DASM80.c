@@ -1,8 +1,9 @@
 // DASM80.cpp : Defines the entry point for the console application.
 //
-
+#ifdef DEBUG
 #define _TRACE_ACTIVE_ 0
 #define _TRACE_ if ( _TRACE_ACTIVE_ ) errprintf
+#endif
 
 char version[] = "** Z-80(tm) DISASSEMBLER V1.20beta2+DEV - (c) 2015-22 GmEsoft, All rights reserved. **";
 
