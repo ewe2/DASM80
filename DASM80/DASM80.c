@@ -22,6 +22,10 @@ char version[] = "** Z-80(tm) DISASSEMBLER V1.20beta2+DEV - (c) 2015-22 GmEsoft,
 	#include <conio.h>
 #endif
 
+#if defined(LINUX)
+	#include <unistd.h>
+#endif
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -43,17 +47,22 @@ static void errprintf( char* msg, ... )
 	vfprintf( stderr, msg, argptr );
 }
 
-
 static void pause()
 {
-	fputc( '\n', stderr );
+	fputs( '\n', stderr );
 	if ( isatty( fileno( stdout ) ) )
 	{
 		fputs( "Press any key to continue . . . ", stderr );
+#if defined(WINDOWS)
 		getch();
-		fputc( '\n', stderr );
+#else
+		getchar();
+#endif
+		fputs( '\n', stderr );
 	}
 }
+
+
 
 static void usage()
 {
