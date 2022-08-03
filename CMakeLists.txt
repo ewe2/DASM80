@@ -16,8 +16,8 @@ elseif (LINUX)
 endif()
 
 configure_file(
-    "${PROJECT_SOURCE_DIR}/DASM80Config.h.in"
-    "${PROJECT_SOURCE_DIR}/DASM80Cconfig.h"
+    "${PROJECT_SOURCE_DIR}/DASM80/DASM80Config.h.in"
+    "${PROJECT_SOURCE_DIR}/DASM80/DASM80Cconfig.h"
 )
 
 if(WINDOWS)
@@ -28,7 +28,10 @@ endif()
 
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
-add_executable(dasm80 "${PROJECT_SOURCE_DIR}/DASM80/DASM80.c")
+add_executable(dasm80 "${PROJECT_SOURCE_DIR}/DASM80/DASM80.c") 
+
+target_link_libraries (dasm80 disasmZ80 memZ80)
+
 
 
 set(CMAKE_INSTALL_PREFIX "${PROJECT_NAME}")

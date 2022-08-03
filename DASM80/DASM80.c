@@ -1,9 +1,8 @@
 // DASM80.cpp : Defines the entry point for the console application.
 //
-#ifdef DEBUG
+
 #define _TRACE_ACTIVE_ 0
 #define _TRACE_ if ( _TRACE_ACTIVE_ ) errprintf
-#endif
 
 char version[] = "** Z-80(tm) DISASSEMBLER V1.20beta2+DEV - (c) 2015-22 GmEsoft, All rights reserved. **";
 
@@ -137,7 +136,7 @@ static void addsegment( ushort beg, char type, int offset, ushort offsetbeg, ush
 {
 	int i,pos;
 
-	_TRACE_( "addsegment( %04X, '%c', %04X, %04X, %04X );\n", beg, type, (ushort)offset, offsetbeg, offsetend );
+//	_TRACE_( "addsegment( %04X, '%c', %04X, %04X, %04X );\n", beg, type, (ushort)offset, offsetbeg, offsetend );
 	
 	for ( pos=0; pos<nsegments; ++pos )
 	{
@@ -1118,14 +1117,17 @@ int main(int argc, char* argv[])
 					noheader = 1;
 					break;
 				case 'Q':	// No Single Quote
-					nosquot = 1;
 					break;
 				default:
 					--s;
 				}
 				break;
 			case '-':
+#if defined(WINDOWS)			
 				if ( !stricmp( s, "zmac" ) )
+#else
+				if (!strncmp (s, "zmac", 4 ) )
+#endif
 				{
 					zmac = 1;
 				}

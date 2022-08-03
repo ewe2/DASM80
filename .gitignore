@@ -356,4 +356,5 @@ MigrationBackup/
 build/*
 
 # generated config files
+DASM80/DASM80Cconfig.h
 DASM80Cconfig.h

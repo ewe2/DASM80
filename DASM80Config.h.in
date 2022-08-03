@@ -1,9 +1,0 @@
-// Platform-dependent inclusions.
-//
-
-#cmakedefine WINDOWS
-#cmakedefine LINUX
-
-
-
-
