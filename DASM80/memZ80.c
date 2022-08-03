@@ -6,6 +6,7 @@
 #include "memZ80.h"
 #include "disasZ80.h"
 
+#ifdef DEBUG
 #ifdef trace
 #undef trace
 #endif
@@ -17,7 +18,7 @@
 #	define trace(trace)
 #	define tgetch()
 #endif
-
+#endif
 
 
 
