@@ -4,7 +4,6 @@
 typedef unsigned int uint;
 typedef unsigned char uchar;
 typedef unsigned long ulong;
-typedef unsigned long ushort; //TODO: check
 
 typedef int (*compfptr_t)(const void*, const void*);
 typedef uchar (*readfptr_t)( ushort );
