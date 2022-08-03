@@ -3,7 +3,7 @@
 #include <assert.h>
 #include <time.h>
 
-#include "memz80.h"
+#include "memZ80.h"
 #include "disasZ80.h"
 
 #ifdef trace

@@ -1,12 +1,16 @@
-#define _CRT_SECURE_NO_WARNINGS 1
-
 #include <assert.h>
 #include <stdio.h>
 #include <string.h>
+
+#if defined(WINDOWS)
+#define _CRT_SECURE_NO_WARNINGS 1
 #include <dos.h>
+#include <sys\stat.h>
+#endif
+
 #include <stdlib.h>
 #include <fcntl.h>
-#include <sys\stat.h>
+#include <sys/stat.h>
 
 //#include "borl2ms.h"
 
