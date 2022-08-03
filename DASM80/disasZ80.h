@@ -4,6 +4,7 @@
 typedef unsigned int uint;
 typedef unsigned char uchar;
 typedef unsigned long ulong;
+typedef unsigned short int ushort; // needed definition here outside includes.
 
 typedef int (*compfptr_t)(const void*, const void*);
 typedef uchar (*readfptr_t)( ushort );

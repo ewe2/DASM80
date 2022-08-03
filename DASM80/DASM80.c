@@ -50,7 +50,7 @@ static void errprintf( char* msg, ... )
 
 static void pause()
 {
-	fputs( '\n', stderr );
+	fputc( '\n', stderr );
 	if ( isatty( fileno( stdout ) ) )
 	{
 		fputs( "Press any key to continue . . . ", stderr );
@@ -59,7 +59,7 @@ static void pause()
 #else
 		getchar();
 #endif
-		fputs( '\n', stderr );
+		fputc( '\n', stderr );
 	}
 }
 
