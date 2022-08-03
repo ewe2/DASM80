@@ -349,3 +349,11 @@ MigrationBackup/
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
 /DASM80/*.bak
+
+# backup files
+*~
+# any files in a build directory
+build/*
+
+# generated config files
+DASM80Cconfig.h

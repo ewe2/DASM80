@@ -17,10 +17,12 @@ char version[] = "** Z-80(tm) DISASSEMBLER V1.20beta2+DEV - (c) 2015-22 GmEsoft,
 
 */
 
+#if defined(WINDOWS)
+	#define _CRT_SECURE_NO_WARNINGS 1
+	#include <conio.h>
+#endif
 
-#define _CRT_SECURE_NO_WARNINGS 1
 #include <stdio.h>
-#include <conio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
