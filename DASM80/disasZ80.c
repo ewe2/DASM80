@@ -439,11 +439,19 @@ char* getsaddr()
 	return ret;
 }
 
+// deal with M$ vs GNU inlining.
+
+#if defined (WINDOWS)
 // Get nth opcode (1st or 2nd)
+#if defined (WINDOWS)
 __inline int getopn(int opcode, int pos) { return pos==1? instr[opcode].opn1 : instr[opcode].opn2 ; }
 
 // Get nth argument (1st or 2nd)
 __inline int getarg(int opcode, int pos) { return pos==1? instr[opcode].arg1 : instr[opcode].arg2 ; }
+#else
+inline int getopn(int opcode, int pos) {return pos==1? instr[opcode].opn1 : instr[opcode].opn2 ;} __attribute__((always_inline));
+inline int getarg(int opcode, int pos) {return pos==1? instr[opcode].arg1 : instr[opcode].arg2 ;} __attribute__((always_inline));
+#endif
 
 // return operand name or value
 char* getoperand (int opcode, int pos)
@@ -553,7 +561,11 @@ static void addComment( char *src, int size, char *comment )
 			src[n] = ' ';
 
 		src[n] = 0;
+#if defined(WINDOWS)
 		strncat_s( src, size, comment, size - n - 1 );
+#else
+		strncat(src,size,comment,size - n -1);
+#endif
 	}
 }
 

@@ -45,7 +45,7 @@ extern uint		pc;
 
 extern char		nonewequ;
 
-extern int		nZ80symbols;
+extern uint		nZ80symbols;
 extern symbol_t	*Z80symbols;
 extern int		pcoffset;
 extern ushort	pcoffsetbeg, pcoffsetend;
