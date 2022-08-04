@@ -441,7 +441,6 @@ char* getsaddr()
 
 // deal with M$ vs GNU inlining.
 
-#if defined (WINDOWS)
 // Get nth opcode (1st or 2nd)
 #if defined (WINDOWS)
 __inline int getopn(int opcode, int pos) { return pos==1? instr[opcode].opn1 : instr[opcode].opn2 ; }
@@ -449,8 +448,19 @@ __inline int getopn(int opcode, int pos) { return pos==1? instr[opcode].opn1 : i
 // Get nth argument (1st or 2nd)
 __inline int getarg(int opcode, int pos) { return pos==1? instr[opcode].arg1 : instr[opcode].arg2 ; }
 #else
-inline int getopn(int opcode, int pos) {return pos==1? instr[opcode].opn1 : instr[opcode].opn2 ;} __attribute__((always_inline));
-inline int getarg(int opcode, int pos) {return pos==1? instr[opcode].arg1 : instr[opcode].arg2 ;} __attribute__((always_inline));
+inline int getopn(int opcode, int pos) __attribute__((always_inline)); 
+inline int getarg(int opcode, int pos) __attribute__((always_inline)); 
+
+
+inline int getopn(int opcode, int pos)
+{
+	return pos==1? instr[opcode].opn1 : instr[opcode].opn2;
+}
+
+inline int getarg(int opcode, int pos)
+{
+	return pos==1? instr[opcode].arg1 : instr[opcode].arg2;
+}
 #endif
 
 // return operand name or value
@@ -564,7 +574,7 @@ static void addComment( char *src, int size, char *comment )
 #if defined(WINDOWS)
 		strncat_s( src, size, comment, size - n - 1 );
 #else
-		strncat(src,size,comment,size - n -1);
+		strncat(src,comment,size);
 #endif
 	}
 }

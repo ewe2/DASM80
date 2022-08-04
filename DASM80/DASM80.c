@@ -576,12 +576,11 @@ static void equload( char *filename )
 								symbols[n].ds = 1;
 
 								if ( comment )
-#if defined(WINDOWS
+#if defined(WINDOWS)
 									strncpy_s( symbols[n].comment, sizeof( symbols[n].comment ), 
 									           s + comment, sizeof( symbols[n].comment ) - 1 );
 #else
-									strncpy( symbols[n].comment, sizeof( symbols[n].comment ),
-											s + comment, sizeof( symbols[n].comment ) - 1);
+									strncpy( symbols[n].comment, s + comment, sizeof( symbols[n].comment ) );
 #endif
 								else
 									*symbols[n].comment = 0;

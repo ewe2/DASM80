@@ -350,6 +350,9 @@ MigrationBackup/
 .ionide/
 /DASM80/*.bak
 
+# vscode stuff
+.vscode/
+
 # backup files
 *~
 # any files in a build directory
